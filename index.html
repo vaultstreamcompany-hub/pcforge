@@ -26,7 +26,7 @@
             position: fixed; top: 0; width: 100%; background: rgba(10,10,10,0.98);
             backdrop-filter: blur(12px); z-index: 1000; padding: 1.3rem 0; text-align: center;
         }
-        nav a { color: white; margin: 0 25px; text-decoration: none; font-weight: 500; }
+        nav a { color: white; margin: 0 25px; text-decoration: none; font-weight: 500; transition: 0.3s; }
         nav a:hover { color: var(--accent); }
 
         header {
@@ -46,7 +46,7 @@
 
         .cta-btn {
             background: var(--accent); color: #000; padding: 16px 44px; font-size: 1.25rem;
-            font-weight: 700; border: none; border-radius: 50px; cursor: pointer;
+            font-weight: 700; border: none; border-radius: 50px; cursor: pointer; transition: 0.3s;
         }
         .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 35px rgba(0,255,157,0.4); }
 
@@ -79,10 +79,10 @@
 
         .pc-card img {
             width: 100%;
-            height: 350px; /* Iets verhoogd voor de nieuwe foto's */
-            object-fit: contain; /* Contain zorgt dat de PC's volledig zichtbaar blijven */
+            height: 350px;
+            object-fit: contain;
             background: #000;
-            padding: 10px;
+            padding: 20px;
         }
 
         .pc-info { padding: 28px; }
@@ -97,7 +97,7 @@
             display: block; width: 100%; padding: 15px; margin: 10px 0;
             border-radius: 14px; text-align: center; font-weight: 600; text-decoration: none;
         }
-        .btn-buy { background: var(--accent); color: #000; }
+        .btn-buy { background: var(--accent); color: #000; transition: 0.3s; }
         .btn-buy:hover { background: #00e68a; }
 
         .floating-btn {
@@ -108,6 +108,8 @@
         }
         .floating-btn:hover { transform: scale(1.12); }
         .floating-whatsapp { right: 30px; background: #25D366; }
+
+        footer { padding: 60px 20px; text-align: center; color: var(--muted); border-top: 1px solid #222; }
     </style>
 </head>
 <body>
@@ -115,7 +117,7 @@
 <nav>
     <a href="#prebuilts">Pre-Builts</a>
     <a href="#custom">Op Maat</a>
-    <a href="#" onclick="showConditions()">Voorwaarden</a>
+    <a href="algemene_voorwaarden.html" target="_blank">Voorwaarden</a>
 </nav>
 
 <header>
@@ -134,7 +136,7 @@
             <div class="pc-card">
                 <img src="image_d40c1b.png" alt="Storm RTX 4070 Ti">
                 <div class="pc-info">
-                    <h3>Storm RTX 4070 Ti (White Edition)</h3>
+                    <h3>Storm RTX 4070 Ti (White)</h3>
                     <ul class="specs">
                         <li><i class="fas fa-microchip"></i> Intel Core i7-14700F</li>
                         <li><i class="fas fa-memory"></i> 32GB DDR5-6000</li>
@@ -151,7 +153,7 @@
             <div class="pc-card">
                 <img src="shopping.webp" alt="Thunder RX 7800 XT">
                 <div class="pc-info">
-                    <h3>Thunder RX 7800 XT (Black Edition)</h3>
+                    <h3>Thunder RX 7800 XT (Black)</h3>
                     <ul class="specs">
                         <li><i class="fas fa-microchip"></i> AMD Ryzen 7 7700X</li>
                         <li><i class="fas fa-memory"></i> 32GB DDR5-6000</li>
@@ -172,22 +174,17 @@
     <div class="container" style="text-align:center;">
         <h2>Custom PC op Maat</h2>
         <p style="color:var(--muted);">Wil je iets speciaals? Laat het ons weten via WhatsApp.</p>
-        <a href="https://wa.me/32498210958" target="_blank" class="cta-btn" style="margin-top:20px; display:inline-block;">
+        <a href="https://wa.me/32498210958" target="_blank" class="cta-btn" style="margin-top:20px; display:inline-block; text-decoration: none;">
             <i class="fab fa-whatsapp"></i> Start custom configuratie
         </a>
     </div>
 </div>
 
 <footer>
-    <p style="text-align:center; padding: 40px 0; color: var(--muted);">PCForge © 2026 • Alle prijzen inclusief BTW</p>
+    <p>PCForge © 2026 • Alle prijzen inclusief BTW</p>
 </footer>
 
 <a href="https://wa.me/32498210958" target="_blank" class="floating-btn floating-whatsapp"><i class="fab fa-whatsapp"></i></a>
 
-<script>
-function showConditions() {
-    alert("Algemene Voorwaarden 2026:\n- 14 dagen bedenktermijn\n- 2 jaar garantie");
-}
-</script>
 </body>
 </html>

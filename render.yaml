@@ -1,7 +1,4 @@
 version: 1
-name: PCForge Website
-type: web
-plan: free
 
 services:
   - type: web

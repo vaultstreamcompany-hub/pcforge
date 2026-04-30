@@ -2,14 +2,14 @@ version: 1
 name: PCForge Website
 type: web
 plan: free
+
 services:
   - type: web
     name: pcforge
     runtime: static
-    repo: https://github.com/JOUW_GITHUB_USERNAME/pcforge   # ← VERANDER DIT!
+    repo: https://github.com/vaultstreamcompany-hub/pcforge
     branch: main
     rootDir: .
-    buildCommand: ""          # Geen build nodig voor statische site
-    staticPublishPath: "."    # Alles in de root map publiceren (index.html)
-    envVars: []
+    buildCommand: ""
+    staticPublishPath: "."
     autoDeploy: true

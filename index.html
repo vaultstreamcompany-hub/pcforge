@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
+    <script>
+  // Controleer of de gebruiker de voorwaarden deze sessie al heeft gezien
+  if (!sessionStorage.getItem('tos_accepted')) {
+    window.location.href = 'algemene_voorwaarden.html';
+  }
+</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PCForge | Pre-Built Gaming PC's</title>

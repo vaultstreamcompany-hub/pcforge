@@ -29,7 +29,7 @@
     overflow-x: hidden;
   }
 
-  /* ── SPLASH SCREEN (CLICK TO ACCEPT) ── */
+  /* ── SPLASH SCREEN ── */
   #overlay {
     position: fixed;
     inset: 0;
@@ -83,9 +83,22 @@
   }
   .popup-overlay.show { visibility: visible; opacity: 1; }
   .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 24px; }
-  .btn-exit { background: #ef4444; color: white; border: none; padding: 14px; border-radius: 12px; cursor: pointer; font-weight: 600; text-decoration: none; font-size: 15px; transition: opacity 0.2s; }
+  
+  .btn-exit { 
+    background: #ef4444; 
+    color: white; 
+    border: none; 
+    padding: 14px; 
+    border-radius: 12px; 
+    cursor: pointer; 
+    font-weight: 600; 
+    text-decoration: none; 
+    font-size: 15px; 
+    transition: 0.2s;
+  }
+  .btn-exit:hover { background: #dc2626; }
+
   .btn-stay { background: var(--accent-light); color: var(--accent); border: none; padding: 14px; border-radius: 12px; cursor: pointer; font-weight: 600; font-size: 15px; }
-  .btn-exit:hover { opacity: 0.9; }
 
   /* ── FLOATING NAV ── */
   #view-tos-btn {
@@ -97,23 +110,17 @@
     z-index: 900; display: none; border: 1px solid var(--border);
   }
 
-  /* ── HEADER ─────────────────────────────────── */
   header { background: var(--accent); color: white; padding: 80px 0 60px; position: relative; overflow: hidden; }
   .header-inner { max-width: 760px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 1; }
   .header-label { font-size: 12px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.6); margin-bottom: 12px; }
   header h1 { font-family: 'DM Serif Display', serif; font-size: clamp(2.2rem, 5vw, 3.2rem); font-weight: 400; line-height: 1.15; margin-bottom: 16px; }
   .version-badge { display: inline-block; margin-top: 20px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25); border-radius: 20px; padding: 4px 14px; font-size: 12px; font-weight: 500; }
 
-  /* ── MAIN CONTENT ────────────────────────────── */
   .container { max-width: 760px; margin: 0 auto; padding: 0 32px; }
   main { padding: 48px 0 80px; }
   .article { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 40px 44px; margin-bottom: 28px; }
   .article-number { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
   .article h2 { font-family: 'DM Serif Display', serif; font-size: 1.65rem; font-weight: 400; color: var(--ink); margin-bottom: 20px; padding-bottom: 16px; border-bottom: 2px solid var(--accent-light); }
-  .clauses { list-style: none; display: grid; gap: 8px; margin: 12px 0 20px; }
-  .clauses li::before { content: '—'; color: var(--accent); font-weight: 700; margin-right: 12px; }
-  .callout { border-radius: 10px; padding: 16px 20px; margin: 20px 0; font-size: 14px; border-left: 4px solid var(--accent); }
-  .callout.info { background: var(--accent-light); color: #1e3a8a; }
   
   footer { background: var(--ink); color: rgba(255,255,255,0.5); text-align: center; padding: 40px; font-size: 13px; }
 </style>
@@ -124,7 +131,7 @@
   <div class="overlay-content">
     <div style="text-transform: uppercase; letter-spacing: 2px; font-size: 12px; margin-bottom: 12px; opacity: 0.7;">Juridische Bevestiging</div>
     <h1>Algemene Voorwaarden 2026</h1>
-    <p style="margin-bottom: 32px; opacity: 0.8; font-size: 1.1rem;">Door op de onderstaande knop te klikken, bevestigt u dat u akkoord gaat met onze herziene voorwaarden voor het jaar 2026.</p>
+    <p style="margin-bottom: 32px; opacity: 0.8; font-size: 1.1rem;">Door op de onderstaande knop te klikken, bevestigt u dat u akkoord gaat met onze voorwaarden.</p>
     <button class="btn-accept" onclick="acceptTerms()">Accepteren en Verdergaan</button>
   </div>
 </div>
@@ -132,71 +139,45 @@
 <div class="popup-overlay" id="p-overlay"></div>
 <div id="exit-popup">
   <h2 style="font-family: 'DM Serif Display', serif; margin-bottom: 12px; font-size: 1.8rem;">Toegang Verleend</h2>
-  <p style="font-size: 15px; color: var(--muted); line-height: 1.6;">U heeft de voorwaarden geaccepteerd. Wilt u de website nu betreden of wilt u eerst de volledige tekst van 2026 doornemen?</p>
+  <p style="font-size: 15px; color: var(--muted); line-height: 1.6;">U heeft de voorwaarden geaccepteerd. Wilt u de website nu betreden?</p>
   <div class="btn-group">
     <button class="btn-stay" onclick="closePopup()">Document Doorlezen</button>
-    <a href="#" class="btn-exit" onclick="alert('U wordt nu doorgestuurd naar de hoofdpagina.')">Naar de Website</a>
+    <a href="shop.html" class="btn-exit">Naar de Website</a>
   </div>
 </div>
 
-<a href="#" id="view-tos-btn" onclick="showOverlay()">Opnieuw Bevestigen</a>
-
 <header>
   <div class="header-inner">
-    <div class="header-label">Juridisch document</div>
     <h1>Algemene Voorwaarden</h1>
-    <p class="header-sub">Terms of Service — Webshop &amp; Fysieke Winkel</p>
-    <div class="version-badge">Versie 1.1 &nbsp;·&nbsp; 2026</div>
+    <div class="version-badge">Versie 1.1 · 2026</div>
   </div>
 </header>
 
 <main>
   <div class="container">
-    <div class="article" id="art1">
+    <div class="article">
       <div class="article-number">Artikel 01</div>
       <h2>Toepassingsgebied</h2>
-      <p>Deze Algemene Voorwaarden (Editie 2026) zijn van toepassing op alle aankopen van producten via onze webshop of fysieke winkel. Door een aankoop te plaatsen, aanvaardt de klant uitdrukkelijk deze voorwaarden in hun geheel.</p>
-    </div>
-
-    <div class="article" id="art2">
-      <div class="article-number">Artikel 02</div>
-      <h2>Retourbeleid Losse Onderdelen</h2>
-      <p>Losse onderdelen kunnen uitsluitend worden teruggestuurd binnen een termijn van <strong>3 maanden</strong> na de aankoopdatum in 2026.</p>
-      <ul class="clauses">
-        <li>Producten moeten in originele, onberispelijke staat verkeren.</li>
-        <li>De originele verpakking is vereist voor een volledige refund.</li>
-      </ul>
-    </div>
-
-    <div class="article" id="art4">
-      <div class="article-number">Artikel 04</div>
-      <h2>Verbod op Herverkoop</h2>
-      <div class="callout info">
-        <strong>Anti-Dropshipping 2026</strong>
-        Het is verboden interne componenten te verwijderen of te vervangen gedurende een periode van 30 dagen na aankoop.
-      </div>
-      <p>Onze producten zijn uitsluitend bestemd voor persoonlijk gebruik en niet voor commerciële doorverkoop zonder toestemming.</p>
+      <p>Deze voorwaarden zijn van toepassing op alle aankopen bij PCForge.</p>
     </div>
   </div>
 </main>
 
 <footer>
-  <span>Algemene Voorwaarden</span> — Versie 1.1<br>
-  Opgesteld conform de Belgische wetgeving &nbsp;·&nbsp; Laatste update: Januari 2026
+  PCForge 2026 · Opgesteld conform de Belgische wetgeving
 </footer>
 
 <script>
   function acceptTerms() {
-    // Verberg de splash overlay
+    // Sla de aanvaarding op voor deze sessie
+    sessionStorage.setItem('tos_accepted', 'true');
+    
     const overlay = document.getElementById('overlay');
     overlay.style.opacity = '0';
     setTimeout(() => {
       overlay.style.visibility = 'hidden';
-      // Toon de exit/stay popup
       document.getElementById('exit-popup').classList.add('show');
       document.getElementById('p-overlay').classList.add('show');
-      // Toon de kleine reset knop links onderin
-      document.getElementById('view-tos-btn').style.display = 'block';
     }, 400);
   }
 
@@ -204,13 +185,6 @@
     document.getElementById('exit-popup').classList.remove('show');
     document.getElementById('p-overlay').classList.remove('show');
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  function showOverlay() {
-    const overlay = document.getElementById('overlay');
-    overlay.style.visibility = 'visible';
-    overlay.style.opacity = '1';
-    document.getElementById('view-tos-btn').style.display = 'none';
   }
 </script>
 
